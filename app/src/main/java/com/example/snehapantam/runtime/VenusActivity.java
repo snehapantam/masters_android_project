@@ -127,7 +127,7 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(venus_book).title("Venus").snippet("Third shelf")
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(venus_book).title("Venus").snippet("Row:45 Fourth shelf ")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();

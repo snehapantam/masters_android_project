@@ -124,9 +124,7 @@ public class EarthActivity extends FragmentActivity implements OnMapReadyCallbac
 
 
             Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("EarthActivity").
-                    snippet("Section: 'P' Row:38 " +
-                            "Second shelf from the Top " +
-                            "Status:AVAILABLE")
+                    snippet("Row:38 Second shelf ")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();

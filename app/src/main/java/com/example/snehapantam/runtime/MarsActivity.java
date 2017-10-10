@@ -125,7 +125,7 @@ public class MarsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(mars_book).title("Mars").snippet("First shelf")
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(mars_book).title("Mars").snippet("Row:56 First shelf ")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();
