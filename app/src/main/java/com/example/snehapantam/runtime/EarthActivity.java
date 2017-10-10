@@ -123,7 +123,7 @@ public class EarthActivity extends FragmentActivity implements OnMapReadyCallbac
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("EarthActivity").
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("Earth").
                     snippet("Row:38 Second shelf ")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
