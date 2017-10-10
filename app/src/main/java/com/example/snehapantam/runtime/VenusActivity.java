@@ -55,17 +55,11 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
 
     /* used to decide when bitmap should be downscaled */
     private static final int MAX_DIMENSION = 2048;
-
+    final Map<String,Polyline> polylines = new HashMap<>();
+    List<LatLng> points= new ArrayList<>();// Array list that stores Latitude and Longitude values
+    LatLng venus_book= new LatLng(34.18272183, -117.32370548);
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker mMarker;
-
-
-
-    List<LatLng> points= new ArrayList<LatLng>();// Array list that stores Latitude and Longitude values
-
-
-
-
     private IARegion mOverlayFloorPlan = null;
     private GroundOverlay mGroundOverlay = null;
     private IALocationManager mIALocationManager;
@@ -73,10 +67,6 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
     private IATask<IAFloorPlan> mFetchFloorPlanTask;
     private Target mLoadTarget;
     private boolean mCameraPositionNeedsUpdating = true;
-    LatLng venus_book= new LatLng(34.18272183, -117.32370548);
-    final Map<String,Polyline> polylines = new HashMap<>();
-
-
     /**
      * Listener that handles location change events.
      */
@@ -94,7 +84,7 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
                 points.clear();
                 polylines.get("polylinesneha").remove();
 
-            };
+            }
 
 
 
@@ -144,31 +134,6 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
 
         }
     };
-
-    private void polylinemethod() {
-
-        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
-
-        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),venus_book)));// adding polyline to HashMap
-
-
-
-
-
-    }
-
-
-
-
-    //add Marker in current position
-
-
-
-
-
-
-
-
     /**
      * Listener that changes overlay if needed
      */
@@ -215,6 +180,22 @@ public class VenusActivity extends FragmentActivity implements OnMapReadyCallbac
 
     };
 
+
+
+
+    //add Marker in current position
+
+    private void polylinemethod() {
+
+        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
+
+        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),venus_book)));// adding polyline to HashMap
+
+
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

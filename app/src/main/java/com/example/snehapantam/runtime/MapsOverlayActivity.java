@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -53,15 +54,11 @@ public class MapsOverlayActivity extends FragmentActivity implements OnMapReadyC
 
     /* used to decide when bitmap should be downscaled */
     private static final int MAX_DIMENSION = 2048;
-
+    final Map<String,Polyline> polylines = new HashMap<>();
+List<LatLng> points= new ArrayList<LatLng>();
+    LatLng mercury_book= new LatLng(34.18249717, -117.32380673);
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker mMarker;
-
-
-List<LatLng> points= new ArrayList<LatLng>();
-
-
-
     private IARegion mOverlayFloorPlan = null;
     private GroundOverlay mGroundOverlay = null;
     private IALocationManager mIALocationManager;
@@ -69,10 +66,6 @@ List<LatLng> points= new ArrayList<LatLng>();
     private IATask<IAFloorPlan> mFetchFloorPlanTask;
     private Target mLoadTarget;
     private boolean mCameraPositionNeedsUpdating = true;
-    LatLng mercury_book= new LatLng(34.18249717, -117.32380673);
-    final Map<String,Polyline> polylines = new HashMap<>();
-
-
     /**
      * Listener that handles location change events.
      */
@@ -90,9 +83,7 @@ if(points.size()==1)
     points.clear();
 polylines.get("polylinesneha").remove();
 
-};
-
-
+}
 
 
             Log.d(TAG, "new location received with coordinates: " + location.getLatitude()
@@ -139,30 +130,6 @@ mMarker1.showInfoWindow();
 
         }
     };
-
-    private void polylinemethod() {
-
-        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
-
-        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),mercury_book)));
-
-
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Listener that changes overlay if needed
      */
@@ -210,6 +177,17 @@ mMarker1.showInfoWindow();
 
     };
 
+    private void polylinemethod() {
+
+        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
+
+        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),mercury_book)));
+
+
+
+
+
+        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +207,19 @@ mMarker1.showInfoWindow();
         // instantiate IALocationManager and IAResourceManager
         mIALocationManager = IALocationManager.create(this);
         mResourceManager = IAResourceManager.create(this);
+
+        final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipe);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                finish();
+                startActivity(getIntent());
+
+            }
+        });
+
+
 
 
     }

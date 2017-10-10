@@ -124,7 +124,7 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
 
 
 
-                };
+                }
 
 
 
@@ -166,11 +166,7 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
                     ? "VENUE "
                     : "FLOOR_PLAN ") + region.getId());
 
-            if (region.getId()!="e1b5c684-6288-4be9-8048-6459ed4e9402"){
 
-
-
-            }
 
 
         }

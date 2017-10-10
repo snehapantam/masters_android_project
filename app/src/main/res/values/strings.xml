@@ -87,5 +87,6 @@
     <string name="title_activity_imagview">Imagview</string>
     <string name="title_activity_newone">Map</string>
     <string name="title_activity_common">Map</string>
+    <string name="found_my_book">Found my Book!</string>
 
 </resources>

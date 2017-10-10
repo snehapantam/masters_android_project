@@ -53,15 +53,11 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
 
     /* used to decide when bitmap should be downscaled */
     private static final int MAX_DIMENSION = 2048;
-
+    final Map<String,Polyline> polylines = new HashMap<>();
+    List<LatLng> points= new ArrayList<>();
+    LatLng earth_book= new LatLng(34.18253933, -117.32393146);
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker mMarker;
-
-
-    List<LatLng> points= new ArrayList<LatLng>();
-
-
-
     private IARegion mOverlayFloorPlan = null;
     private GroundOverlay mGroundOverlay = null;
     private IALocationManager mIALocationManager;
@@ -69,10 +65,6 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
     private IATask<IAFloorPlan> mFetchFloorPlanTask;
     private Target mLoadTarget;
     private boolean mCameraPositionNeedsUpdating = true;
-    LatLng earth_book= new LatLng(34.18253933, -117.32393146);
-    final Map<String,Polyline> polylines = new HashMap<>();
-
-
     /**
      * Listener that handles location change events.
      */
@@ -90,9 +82,7 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
                 points.clear();
                 polylines.get("polylinesneha").remove();
 
-            };
-
-
+            }
 
 
             Log.d(TAG, "new location received with coordinates: " + location.getLatitude()
@@ -127,7 +117,7 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("Earth").snippet("First shelf")
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("Earth").snippet("Section: 'P' Row:38").snippet("Second shelf from the Top").snippet("Status:AVAILABLE")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();
@@ -139,30 +129,6 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
 
         }
     };
-
-    private void polylinemethod() {
-
-        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
-
-        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),earth_book)));
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Listener that changes overlay if needed
      */
@@ -210,6 +176,17 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
 
     };
 
+    private void polylinemethod() {
+
+        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
+
+        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),earth_book)));
+
+
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

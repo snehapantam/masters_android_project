@@ -53,15 +53,11 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
 
     /* used to decide when bitmap should be downscaled */
     private static final int MAX_DIMENSION = 2048;
-
+    final Map<String,Polyline> polylines = new HashMap<>();
+    List<LatLng> points= new ArrayList<>();
+    LatLng jupiter_book= new LatLng(34.18233520, -117.32399583);
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker mMarker;
-
-
-    List<LatLng> points= new ArrayList<LatLng>();
-
-
-
     private IARegion mOverlayFloorPlan = null;
     private GroundOverlay mGroundOverlay = null;
     private IALocationManager mIALocationManager;
@@ -69,10 +65,6 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
     private IATask<IAFloorPlan> mFetchFloorPlanTask;
     private Target mLoadTarget;
     private boolean mCameraPositionNeedsUpdating = true;
-    LatLng jupiter_book= new LatLng(34.18233520, -117.32399583);
-    final Map<String,Polyline> polylines = new HashMap<>();
-
-
     /**
      * Listener that handles location change events.
      */
@@ -90,7 +82,7 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
                 points.clear();
                 polylines.get("polylinesneha").remove();
 
-            };
+            }
 
 
 
@@ -139,30 +131,6 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
 
         }
     };
-
-    private void polylinemethod() {
-
-        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
-
-        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),jupiter_book)));
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Listener that changes overlay if needed
      */
@@ -210,6 +178,17 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
 
     };
 
+    private void polylinemethod() {
+
+        PolylineOptions polylineOptions= new PolylineOptions().width(10).color(RED).geodesic(true);
+
+        polylines.put("polylinesneha",mMap.addPolyline(polylineOptions.add(points.get(0),jupiter_book)));
+
+
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

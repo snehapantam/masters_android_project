@@ -1,6 +1,6 @@
-<RelativeLayout android:layout_height="match_parent"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
 
 
@@ -13,12 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        tools:context="com.example.snehapantam.runtime.VenusActivity"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        tools:context="com.example.snehapantam.runtime.VenusActivity" />
+
+
+    <Button
+        android:id="@+id/buttoncommon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Mark my book" />
 
 
 
 
 
-
-</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
