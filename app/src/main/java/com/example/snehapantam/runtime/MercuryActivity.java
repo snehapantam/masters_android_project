@@ -1,9 +1,11 @@
 package com.example.snehapantam.runtime;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
+import android.os.Process;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -222,14 +224,14 @@ mMarker1.showInfoWindow();
         });
 
 
-        Button finish=(Button)findViewById(R.id.finish);
+        final Button finish=(Button)findViewById(R.id.finish);
 
         finish.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
+                final Intent intent = new Intent(MercuryActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -239,7 +241,10 @@ mMarker1.showInfoWindow();
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // remember to clean up after ourselves
+        // remember to clean up
+        //
+        // after ourselves
+
         mIALocationManager.destroy();
     }
 

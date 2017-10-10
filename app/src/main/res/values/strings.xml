@@ -90,5 +90,6 @@
     <string name="book_hunt">Book-Hunt!</string>
     <string name="help">Help!</string>
     <string name="found_my_book">Found my Book!</string>
+    <string name="mark_my_book">Mark my book</string>
 
 </resources>

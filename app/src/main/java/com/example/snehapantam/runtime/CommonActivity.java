@@ -87,7 +87,7 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
                 return;
             }
 
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());/*Location of user from IA SDK*/
 
             if (mMarker == null) {
                 // first location, add marker

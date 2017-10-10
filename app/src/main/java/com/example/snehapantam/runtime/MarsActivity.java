@@ -1,5 +1,6 @@
 package com.example.snehapantam.runtime;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -222,17 +223,18 @@ public class MarsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        Button finish=(Button)findViewById(R.id.finish);
+        final Button finish=(Button)findViewById(R.id.finish);
 
         finish.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
+                final Intent intent = new Intent(MarsActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
         });
+
 
     }
 

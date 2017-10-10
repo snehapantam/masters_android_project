@@ -75,9 +75,19 @@ public class MainActivity extends AppCompatActivity implements IALocationListene
         spinner.setAdapter(adapter);
 
 
+        final Button button = (Button) findViewById(R.id.help);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               final Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+
+                startActivity(intent);
+            }
+
+
+    });
+
     }
-
-
 
 
     @Override
