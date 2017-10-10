@@ -127,7 +127,7 @@ public class JupiterActivity extends FragmentActivity implements OnMapReadyCallb
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(jupiter_book).title("Jupiter").snippet("Fifth")
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(jupiter_book).title("Jupiter").snippet("Fifthgit commit -m \"First commit\"")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();
