@@ -7,6 +7,8 @@ import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,9 +49,9 @@ import java.util.Map;
 import static android.graphics.Color.RED;
 
 
-public class MapsOverlayActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MercuryActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final String TAG = "MapsOverLay";
+    private static final String TAG = "MercuryActivity";
 
 
     /* used to decide when bitmap should be downscaled */
@@ -220,7 +222,17 @@ mMarker1.showInfoWindow();
         });
 
 
+        Button finish=(Button)findViewById(R.id.finish);
 
+        finish.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
 
     }
 

@@ -5,7 +5,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,9 +49,9 @@ import java.util.Map;
 import static android.graphics.Color.RED;
 
 
-public class MarsActivity2 extends FragmentActivity implements OnMapReadyCallback {
+public class MarsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final String TAG = "MarsActivity2";
+    private static final String TAG = "MarsActivity";
 
 
     /* used to decide when bitmap should be downscaled */
@@ -208,7 +211,28 @@ public class MarsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         // instantiate IALocationManager and IAResourceManager
         mIALocationManager = IALocationManager.create(this);
         mResourceManager = IAResourceManager.create(this);
+        final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipe);
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                finish();
+                startActivity(getIntent());
+
+            }
+        });
+
+        Button finish=(Button)findViewById(R.id.finish);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
 
     }
 

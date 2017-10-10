@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Myapplication</string>
+    <string name="app_name">Book-Hunt!</string>
     <string name="action_clear">Clear</string>
     <string name="example_simple_title">01. Simple</string>
     <string name="example_simple_description">Demonstrates basic functionality, shows events as text entries.</string>
@@ -87,6 +87,8 @@
     <string name="title_activity_imagview">Imagview</string>
     <string name="title_activity_newone">Map</string>
     <string name="title_activity_common">Map</string>
+    <string name="book_hunt">Book-Hunt!</string>
+    <string name="help">Help!</string>
     <string name="found_my_book">Found my Book!</string>
 
 </resources>

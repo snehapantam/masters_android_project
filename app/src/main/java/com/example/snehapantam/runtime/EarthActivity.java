@@ -5,7 +5,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,7 +49,7 @@ import java.util.Map;
 import static android.graphics.Color.RED;
 
 
-public class Earth extends FragmentActivity implements OnMapReadyCallback {
+public class EarthActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String TAG = "EarthActivity";
 
@@ -117,7 +120,10 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("Earth").snippet("Section: 'P' Row:38").snippet("Second shelf from the Top").snippet("Status:AVAILABLE")
+            Marker mMarker1 = mMap.addMarker(new MarkerOptions().position(earth_book).title("EarthActivity").
+                    snippet("Section: 'P' Row:38 " +
+                            "Second shelf from the Top " +
+                            "Status:AVAILABLE")
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.book_icon)));
 
             mMarker1.showInfoWindow();
@@ -207,7 +213,28 @@ public class Earth extends FragmentActivity implements OnMapReadyCallback {
         mIALocationManager = IALocationManager.create(this);
         mResourceManager = IAResourceManager.create(this);
 
+        final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipe);
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                finish();
+                startActivity(getIntent());
+
+            }
+        });
+
+        Button finish=(Button)findViewById(R.id.finish);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+
+            }
+        });
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.example.snehapantam.runtime;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
@@ -11,10 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,8 +24,6 @@ import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 import com.indooratlas.android.sdk.IALocation;
 import com.indooratlas.android.sdk.IALocationListener;
@@ -48,14 +42,9 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import com.squareup.picasso.Target;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_RED;
-
 public class CommonActivity extends FragmentActivity implements OnMapReadyCallback{
 
-    private static final String TAG = "MapsOverLay";
+    private static final String TAG = "CommonActivity";
 
 
 
@@ -222,7 +211,7 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
                     break;
 
                 case "3":
-                    Toast.makeText(CommonActivity.this, "Your book Earth is in the Third floor", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CommonActivity.this, "Your book EarthActivity is in the Third floor", Toast.LENGTH_LONG).show();
                     Toast.makeText(CommonActivity.this, "Click Mark my Book button after you reach Third Floor", Toast.LENGTH_LONG).show();
 
 
@@ -297,7 +286,7 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
                                     break;
 
                                 case "1":
-                                    intent = new Intent(CommonActivity.this, MapsOverlayActivity.class);
+                                    intent = new Intent(CommonActivity.this, MercuryActivity.class);
 
                                     startActivity(intent);
                                     break;
@@ -309,12 +298,12 @@ public class CommonActivity extends FragmentActivity implements OnMapReadyCallba
                                     break;
 
                                 case "3":
-                                    intent = new Intent(CommonActivity.this, Earth.class);
+                                    intent = new Intent(CommonActivity.this, EarthActivity.class);
                                     startActivity(intent);
                                     break;
 
                                 case "4":
-                                    intent = new Intent(CommonActivity.this, MarsActivity2.class);
+                                    intent = new Intent(CommonActivity.this, MarsActivity.class);
                                     startActivity(intent);
                                     break;
                                 case "5":
