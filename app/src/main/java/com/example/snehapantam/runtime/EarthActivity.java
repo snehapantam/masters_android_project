@@ -1,5 +1,6 @@
 package com.example.snehapantam.runtime;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -225,18 +227,29 @@ public class EarthActivity extends FragmentActivity implements OnMapReadyCallbac
             }
         });
 
-        final Button finish=(Button)findViewById(R.id.finish);
+        final Button finish = (Button) findViewById(R.id.finish);
 
         finish.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                final Intent intent = new Intent(EarthActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                AlertDialog.Builder alertdialog = new AlertDialog.Builder(EarthActivity.this);
+                alertdialog.setTitle("Thank you for using our App!");
+
+                alertdialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        final Intent intent = new Intent(EarthActivity.this, MainActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+                AlertDialog alert = alertdialog.create();
+                alert.show();
 
             }
         });
-
     }
 
     @Override

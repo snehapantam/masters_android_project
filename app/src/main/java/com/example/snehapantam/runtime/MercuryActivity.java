@@ -1,5 +1,6 @@
 package com.example.snehapantam.runtime;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -8,6 +9,7 @@ import android.os.Looper;
 import android.os.Process;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -201,8 +203,7 @@ mMarker1.showInfoWindow();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-       // points = new ArrayList<LatLng>();// to do to delete
-
+        // points = new ArrayList<LatLng>();// to do to delete
 
 
         // prevent the screen going to sleep while app is on foreground
@@ -212,7 +213,7 @@ mMarker1.showInfoWindow();
         mIALocationManager = IALocationManager.create(this);
         mResourceManager = IAResourceManager.create(this);
 
-        final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipe);
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -224,18 +225,28 @@ mMarker1.showInfoWindow();
         });
 
 
-        final Button finish=(Button)findViewById(R.id.finish);
+        final Button finish = (Button) findViewById(R.id.finish);
 
         finish.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-                final Intent intent = new Intent(MercuryActivity.this, MainActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
 
+                AlertDialog.Builder alertdialog = new AlertDialog.Builder(MercuryActivity.this);
+                alertdialog.setTitle("Thank you for using our App!");
+
+                alertdialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        final Intent intent = new Intent(MercuryActivity.this, MainActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+                AlertDialog alert = alertdialog.create();
+                alert.show();
             }
         });
-
     }
 
     @Override
